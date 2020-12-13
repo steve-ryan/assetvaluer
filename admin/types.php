@@ -45,7 +45,7 @@
                     </table>
                 </div>
 
-                 <!-- type update modal -->
+                <!-- type update modal -->
                 <div class="modal fade" id="update_type" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <!-- modal end -->
-               
+
 
             </div>
         </div>
@@ -131,7 +131,8 @@
                     }
                 });
             } else {
-                alert('Please fill all the field !');
+                $("#error").show();
+               $('#error').html('Fill all type details!').delay(3000).fadeOut(3000);
             }
         });
 
@@ -144,39 +145,39 @@
                 $('#type-table').html(dataResult);
             }
         });
-         //update type
-        $(function () {
-		$('#update_type').on('show.bs.modal', function (event) {
-			var button = $(event.relatedTarget); 
-			var id = button.data('id');
-			var name = button.data('name');
-			var per = button.data('per');
-			var modal = $(this);
-			modal.find('#name_modal').val(name);
-			modal.find('#per_modal').val(per);
-			modal.find('#id_modal').val(id);
-		});
-    });
-	$(document).on("click", "#update_data", function() { 
-		$.ajax({
-			url: "./../api/update-type.php",
-			type: "POST",
-			cache: false,
-			data:{
-				id: $('#id_modal').val(),
-				name: $('#name_modal').val(),
-				per: $('#per_modal').val(),
-			},
-			success: function(dataResult){
-				var dataResult = JSON.parse(dataResult);
-				if(dataResult.statusCode==200){
-					$('#update_type').modal().hide();
-					alert('Data updated successfully !');
-					location.reload();					
-				}
-			}
-		});
-	}); 
+        //update type
+        $(function() {
+            $('#update_type').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var id = button.data('id');
+                var name = button.data('name');
+                var per = button.data('per');
+                var modal = $(this);
+                modal.find('#name_modal').val(name);
+                modal.find('#per_modal').val(per);
+                modal.find('#id_modal').val(id);
+            });
+        });
+        $(document).on("click", "#update_data", function() {
+            $.ajax({
+                url: "./../api/update-type.php",
+                type: "POST",
+                cache: false,
+                data: {
+                    id: $('#id_modal').val(),
+                    name: $('#name_modal').val(),
+                    per: $('#per_modal').val(),
+                },
+                success: function(dataResult) {
+                    var dataResult = JSON.parse(dataResult);
+                    if (dataResult.statusCode == 200) {
+                        $('#update_type').modal().hide();
+                        alert('Data updated successfully !');
+                        location.reload();
+                    }
+                }
+            });
+        });
 
 
         //Deleting a type

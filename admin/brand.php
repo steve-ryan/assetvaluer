@@ -115,6 +115,8 @@
                     success: function(dataResult) {
                         var dataResult = JSON.parse(dataResult);
                         if (dataResult.statusCode == 200) {
+                            console.log(dataResult);
+
                             $("#brand_btn").removeAttr("disabled");
                             $('#brandForm')[0].reset();
                             $("#success").show();
@@ -122,7 +124,7 @@
                                     'Brand details added successfully !').delay(3000)
                                 .fadeOut(
                                     3000);
-                            location.reload();
+                            $("#brand").load(" #brand");
                         } else if (dataResult.statusCode == 201) {
                             // alert("Error occured !");
                             $("#error").show();
@@ -133,7 +135,8 @@
                     }
                 });
             } else {
-                alert('Please fill speciality name field !');
+                 $("#error").show();
+            $('#error').html('Fill brand details!').delay(3000).fadeOut(3000);
             }
         });
        
@@ -175,7 +178,7 @@
 				if(dataResult.statusCode==200){
 					$('#update_brand').modal().hide();
 					alert('Data updated successfully !');
-					location.reload();					
+					$("#brand").load(" #brand");					
 				}
 			}
 		});

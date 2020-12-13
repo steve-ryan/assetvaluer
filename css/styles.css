@@ -33,6 +33,9 @@
      grid-area: main;
      padding: 0 40px;
  }
+ .client{
+     padding:0 40px;
+ }
 
  /* flexing header and footer*/
 
@@ -106,15 +109,14 @@
          position: relative;
          transform: translateX(0);
      }
-     .main_cards {
+     /* .main_cards {
          margin: 10px;
          display: grid;
-         /*grid-template-columns: 2fr 1fr;*/
          grid-template-columns: 3fr;
          grid-template-rows: 200px 300px;
          grid-template-areas: 'card1 card2' 'card1 card3';
          grid-gap: 10px;
-     }
+     } */
  }
 
  .menu-icon {
