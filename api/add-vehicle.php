@@ -23,7 +23,7 @@ $path = $path.strtolower($final_image);
 
 if(move_uploaded_file($tmp,$path)) 
 {
-// "<img src='$path' />";
+
 $client = $_POST['client1'];
 $brand = $_POST['brand'];
 $type = $_POST['type'];
