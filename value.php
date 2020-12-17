@@ -1,32 +1,3 @@
- <?php
- include ("./database/config.php");
-// hiding any unaccepted php error message if no vehicle is selected
-error_reporting(E_ERROR);
-$var= $_REQUEST['vehicle_id'];
-
-$sql1 = "SELECT model,cost,datediff(CURDATE(),yom)/365.25 as age, b.pers+ t.per as perc FROM vehicle as v JOIN brand b ON v.brand_id = b.brand_id JOIN type as t ON v.type_id = t.type_id WHERE vehicle_id = '$var'";
-if ($result = $db -> query($sql1)) {
-  while ($obj = $result -> fetch_object()) {
-    $per = $obj->perc;
-    $n = $obj->age;
-    $cost = $obj->cost;
-    $depreciation=1-$per;
-    // percentage times n years
-    $b = pow($depreciation,$n);
-    $value=$cost * $b;
-    //round to two decimals
-    $total=number_format($value, 2);
-    //echo total cost vehicle
-    //  echo "$total";
-   
-
-  }
-  $result -> free_result();
-}
-
-$db -> close();
- ?>
-
  <head>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
  </head>
