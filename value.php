@@ -1,13 +1,16 @@
  <head>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./css/bootstrap.min.css" />
  </head>
 
  <div class="card border-success ">
-
-     <!-- <div class="card-header"> Dashboard</div> -->
-
+     <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+     </div>
+     <div class="alert alert-success alert-dismissible" id="error" style="display:none;">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+     </div>
      <div class="card-body ">
-         <form action="" method="GET" id="valueForm" name="valueForm">
+         <form action="" method="" id="valueForm" name="valueForm">
              <div class="form-row">
 
                  <div class="form-group col-md-6 ">
@@ -38,25 +41,62 @@
          </form>
      </div>
  </div>
-<script>
-  $(document).ready(function() {
+ <script>
+$(document).ready(function() {
 
-        $("#reg_no").change(function() {
-            var vehicle_id = $(this).val();
-            var input = $("#finalvalue");
-            console.log(vehicle_id);
+    $("#reg_no").change(function() {
+        var vehicle_id = $(this).val();
+        var input = $("#finalvalue");
+        $.ajax({
+            url: './api/computation.php',
+            type: 'post',
+            data: {
+                vehicle_id: vehicle_id
+            },
+            success: function(data) {
+                console.log(input); {
+                    input.val(data);
+                }
+            }
+        });
+    });
+
+    //Posting a report
+    $('#reportBtn').on('click', function() {
+        $("#reportBtn").attr("disabled", "disabled");
+        var finalvalue = $('#finalvalue').val();
+        var vehicle_id = $('#reg_no').val();
+
+        if (vehicle_id != "" && finalvalue != "") {
             $.ajax({
-                url: './api/computation.php',
-                type: 'post',
+                url: "./api/post-report.php",
+                type: "POST",
                 data: {
+                    finalvalue: finalvalue,
                     vehicle_id: vehicle_id
                 },
-                success: function(data) {
-                    console.log(input);
-                   { input.val(data); }  
+                cache: false,
+                success: function(dataResult) {
+                    var dataResult = JSON.parse(dataResult)
+                    if (dataResult.statusCode == 200) {
+                        $("#reportBtn").removeAttr("disabled");
+                        $('#valueForm')[0].reset();
+                        $("#success").show();
+                        $('#success').html('Report generated successfully !').delay(3000).fadeOut(
+                            3000);
+                    } else if (dataResult.statusCode == 201) {
+                        $('#error').show();
+                       $('#error').html("Error occured !").delay(3000).fadeOut(
+                            3000);
+                    }
+
                 }
             });
-        });
+        } else {
+            alert('Please fill all the fields');
+        }
 
     });
-    </script>
+
+});
+ </script>

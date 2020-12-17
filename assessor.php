@@ -16,12 +16,10 @@ include ("./database/config.php");
       ?>
         <main class="main">
             <div class="col-md-12 ">
-                <div class="row">
                     <div id="root">
                         <p class="text-center text-success">Kindly click on any <span class="text-danger">sidebar menu
                                 item</span>!!</p>
                     </div>
-                </div>
             </div>
     </div>
     </main>

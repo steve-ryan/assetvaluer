@@ -3,12 +3,10 @@
  ?>
 
  <head>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="./css/bootstrap.min.css" />
  </head>
 
  <div class="card border-success ">
-
-     <!-- <div class="card-header"> Dashboard</div> -->
 
      <div class="card-body ">
          <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
