@@ -1,7 +1,7 @@
  <?php
     include ("./../database/config.php");
 
-	$id=$_POST['brand_id'];
+	$id=mysqli_real_escape_string($db,$_POST['brand_id']);
     $sql = "DELETE FROM `brand` WHERE brand_id=$id";
     
 

@@ -15,7 +15,7 @@
     </div>
     <header class="header">
         <div class="header_search">AssetValuer</div>
-        <div class="header_avatar">Logout</div>
+        <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
     </header>
     <aside class="aside">
         <div class="aside_close-icon">
@@ -24,6 +24,7 @@
         <ul class="aside_list">
             <li class="aside_list-item" id="client">Client</li>
             <li class="aside_list-item" id="vehicle">Vehicle</li>
+            <li class="aside_list-item" id="calc">Calc Value</li>
             <li class="aside_list-item" id="logout">Logout</li>
         </ul>
     </aside>
@@ -46,6 +47,16 @@
         $("#logout").click(function() {
             $("#root").load('test.php')
         });
+    });
+    //computation
+    $(document).ready(function() {
+        $("#calc").click(function() {
+            $("#root").load('value.php')
+        });
+    });
+    //logout
+    $('.confirmation').on('click', function() {
+        return confirm('Are you sure to logout?');
     });
     </script>
 </body>

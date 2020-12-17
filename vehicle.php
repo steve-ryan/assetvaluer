@@ -1,6 +1,7 @@
  <?php
  include ("./database/config.php");
  ?>
+
  <head>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
  </head>
@@ -74,7 +75,7 @@
                  </div>
                  <div class="form-group col-md-4">
                      <label for="name"><strong>Model:</strong></label>
-                     <input type="text" class="form-control border-info" id="model" name="model" value=""
+                     <input type="text" class="form-control border-info" id="model" name="model" pattern="[a-zA-Z0-9]+" value=""
                          placeholder="Vehicle Model">
                  </div>
              </div>
@@ -95,19 +96,15 @@
                  </div>
              </div>
              <div class="form-row">
-                 
+
                  <div class="form-group col-md-3">
                      <label for="name"><strong>Intial Cost:</strong></label>
-                     <input type="text" class="form-control border-info" id="cost" name="cost" value="">
-                 </div>
-                 <div class="form-group col-md-3">
-                     <label for="name"><strong>Value:</strong></label>
-                     <input type="text" class="form-control border-info" id="value" name="value" >
+                     <input type="number" class="form-control border-info" id="cost" name="cost" value="">
                  </div>
                  <div class="form-group col-md-6">
                      <label for="name"><strong>Upload images:</strong></label>
-                     <input id="picture" name="picture" accept="image/*" type="file" class="file" data-show-upload="false"
-                         data-show-caption="true" multiple >
+                     <input id="picture" name="picture" accept="image/*" type="file" class="file"
+                         data-show-upload="false" data-show-caption="true" multiple>
                  </div>
 
              </div>
@@ -127,52 +124,48 @@ $(document).ready(function(e) {
         var model = $('#model').val();
         var yom = $('#yom').val();
         var reg_no = $('#reg_no').val();
-        var chassis_no = $('#chassis_no');
-
+        var chassis_no = $('#chassis_no').val();
+        var cost = $('#cost').val();
         
-        if(brand !="" && type!= "" && client != "" && model != "" && yom != "" && reg_no != "" && chassis_no != "" ){
+
+        if (brand != "" && type != "" && client != "" && model != "" && yom != "" && reg_no != "" &&
+            chassis_no != "" && cost != "") {
             $.ajax({
-            type: 'POST',
-            url: "./api/add-vehicle.php",
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            beforeSend: function() {
-                $('.submitBtn').attr("disabled", "disabled");
-                $('#vehicleForm').css("opacity", ".5");
-            },
-            success: function(data) {
-                var data = JSON.parse(data);
-                if (data.statusCode == 200) {
-                    $('#vehicleForm')[0].reset();
-                    $('#vehicleForm').css("opacity", "");
-                    $('.submitBtn').removeAttr("disabled");
-                    $("#success").show();
-                    $('#success').html('Vehicle details uploaded successfully').delay(3000).fadeOut(3000);
-                } else {
-                    (data.statusCode == 201)
+                type: 'POST',
+                url: "./api/add-vehicle.php",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('.submitBtn').attr("disabled", "disabled");
+                    $('#vehicleForm').css("opacity", ".5");
+                },
+                success: function(data) {
+                   var data = JSON.parse(data);
                     // console.log(data);
-                    $("#error").show();
-                    $('#error').html('upload not successful  !').delay(3000).fadeOut(3000);
+                    if (data.statusCode == 200) {
+                        $('#vehicleForm')[0].reset();
+                        $('#vehicleForm').css("opacity", "");
+                        $('.submitBtn').removeAttr("disabled");
+                        $("#success").show();
+                        $('#success').html('Vehicle details uploaded successfully').delay(
+                            3000).fadeOut(3000);
+                    } else {
+                        (data.statusCode == 201)
+                        // console.log(brand,type,client,model,yom,reg_no,chassis_no,cost);
+                        $("#error").show();
+                        $('#error').html('upload not successful  !').delay(3000).fadeOut(
+                            3000);
+                    }
                 }
-            }
-        });
-        }else{
-           $("#error").show();
-          $('#error').html('Fill all details !').delay(3000).fadeOut(3000);
+            });
+        } else {
+            $("#error").show();
+            $('#error').html('Fill all details !').delay(3000).fadeOut(3000);
         }
 
     });
 });
  </script>
- <script>
-$(document).ready(function(){
-    $("#cost").on("input", function(){
-        // Print entered value in a div box
-        $("#value").text($(this).val()).addClass("text-success");
-        var value = $('#value').val();
-        console.log(value);
-    });
-});
-</script>
+ 

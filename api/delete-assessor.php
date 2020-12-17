@@ -1,7 +1,7 @@
 <?php
     include ("./../database/config.php");
 
-	$id=$_POST['assessor_id'];
+	$id=mysqli_real_escape_string($db,$_POST['assessor_id']);
     $sql = "DELETE FROM `assessor` WHERE assessor_id=$id";
     
 

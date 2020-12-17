@@ -1,7 +1,7 @@
 <?php
     include ("./../database/config.php");
 
-	$id=$_POST['type_id'];
+	$id=mysqli_real_escape_string($db,$_POST['type_id']);
     $sql = "DELETE FROM `type` WHERE type_id=$id";
     
 

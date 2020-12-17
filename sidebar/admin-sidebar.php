@@ -14,8 +14,8 @@
         <strong> &#9776;</strong>
     </div>
     <header class="header">
-        <div class="header_search">AssetValuer</div>
-        <div class="header_avatar">Logout</div>
+        <div class="header_search"><?php echo 'Welcome Admin '.$_SESSION['name'].'!';?></div>
+        <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
     </header>
     <aside class="aside">
         <div class="aside_close-icon">
@@ -49,13 +49,12 @@
         });
     });
 
-    //Test
-    $(document).ready(function() {
-        $("#logout").click(function() {
-            $("#root").load('test.php')
-        });
+    //logout
+    $('.confirmation').on('click', function() {
+        return confirm('Are you sure to logout?');
     });
     </script>
+
 </body>
 
 </html>
