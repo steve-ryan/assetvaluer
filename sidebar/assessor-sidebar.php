@@ -42,12 +42,7 @@
             $("#root").load('vehicle.php')
         });
     });
-    // test
-    $(document).ready(function() {
-        $("#logout").click(function() {
-            $("#root").load('test.php')
-        });
-    });
+    
     //computation
     $(document).ready(function() {
         $("#calc").click(function() {

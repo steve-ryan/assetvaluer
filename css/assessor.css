@@ -1,0 +1,41 @@
+/* .shadow-top-right {
+    box-shadow: 35px -5px 35px -5px rgb(218, 213, 213);
+}
+
+.main {
+    padding: 50px 200px;
+} */
+
+#cover {
+    background: #222 url('./../includes/evaluate.jpg') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.switch {
+padding-bottom: 20px;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+
+form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    border-radius: 10px;
+}
