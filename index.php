@@ -93,7 +93,7 @@
             var password = $("#password").val();
             if (name != "" && email != "" && password != "") {
                 $.ajax({
-                    url: "./api/assessor_login_register.php",
+                    url: "./api/login_register.php",
                     type: "POST",
                     data: {
                         type: 1,
@@ -130,7 +130,7 @@
             if (email != "" && password != "") {
                 console.log(email, password);
                 $.ajax({
-                    url: "./api/assessor_login_register.php",
+                    url: "./api/login_register.php",
                     type: "POST",
                     data: {
                         type: 2,
