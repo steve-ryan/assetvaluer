@@ -1,7 +1,3 @@
- <head>
-      <link rel="stylesheet" href="./css/bootstrap.min.css" />
- </head>
-
  <div class="card border-success ">
      <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
          <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
@@ -16,7 +12,7 @@
                  <div class="form-group col-md-6 ">
                      <label for="name"><strong>Registration No:</strong></label>
                      <select name="reg_no" id="reg_no" class="form-control">
-                         <option disabled="">Choose..</option>
+                         <option selected="true" disabled="disabled">Choose..</option>
                          <?php
                         include ("./database/config.php");
                         
@@ -38,6 +34,7 @@
              </div>
 
              <button class="btn btn-primary" type="submit" id="reportBtn">Post Report</button>
+             <button class="btn btn-primary" type="submit" id="generateBtn">Download Report</button>
          </form>
      </div>
  </div>
@@ -60,10 +57,44 @@ $(document).ready(function() {
             }
         });
     });
+// Generate a report
+ $('#generateBtn').on('click', function() {
+        // $("#reportBtn").attr("disabled", "disabled");
+        var finalvalue = $('#finalvalue').val();
+        var vehicle_id = $('#reg_no').val();
+
+        if (vehicle_id != "" && finalvalue != "") {
+            $.ajax({
+                url: "./api/report.php",
+                type: "POST",
+                data: {
+                    finalvalue: finalvalue,
+                    vehicle_id: vehicle_id
+                },
+                cache: false,
+                success: function(dataResult) {
+                    var dataResult = JSON.parse(dataResult)
+                    if (dataResult.statusCode == 200) {
+                        // window.open(url,'_blank');                        
+                        // console.log("success!!");
+                         location.href = "login.html";
+                    } else if (dataResult.statusCode == 201) {
+                       alert("failed")
+                    }
+
+                }
+            });
+        } else {
+            alert('Please fill all the fields');
+        }
+
+    });
+
+
 
     //Posting a report
     $('#reportBtn').on('click', function() {
-        $("#reportBtn").attr("disabled", "disabled");
+        // $("#reportBtn").attr("disabled", "disabled");
         var finalvalue = $('#finalvalue').val();
         var vehicle_id = $('#reg_no').val();
 
@@ -79,14 +110,16 @@ $(document).ready(function() {
                 success: function(dataResult) {
                     var dataResult = JSON.parse(dataResult)
                     if (dataResult.statusCode == 200) {
-                        $("#reportBtn").removeAttr("disabled");
+                        // $("#reportBtn").removeAttr("disabled");
                         $('#valueForm')[0].reset();
                         $("#success").show();
-                        $('#success').html('Report generated successfully !').delay(3000).fadeOut(
-                            3000);
+                        $('#success').html('Report generated successfully !').delay(3000)
+                            .fadeOut(3000);
+                        $("#calc").load(" #calc");
+
                     } else if (dataResult.statusCode == 201) {
                         $('#error').show();
-                       $('#error').html("Error occured !").delay(3000).fadeOut(
+                        $('#error').html("Error occured !").delay(3000).fadeOut(
                             3000);
                     }
 

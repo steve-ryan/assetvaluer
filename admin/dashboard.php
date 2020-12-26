@@ -1,5 +1,5 @@
 <?php 
-include ("./../includes/admin-check.php");
+// include ("./../includes/admin-check.php");
 include ("./../database/config.php");
 ?>
 

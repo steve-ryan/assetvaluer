@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!empty($_SESSION["admin_id"])) {
+if(!empty($_SESSION["adid"])){
     require_once './dashboard.php';
 }
 ?>

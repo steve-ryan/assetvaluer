@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!empty($_SESSION["aid"])){
+    require_once './assessor.php';
+}
+?>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -142,7 +148,9 @@
                         var dataResult = JSON.parse(dataResult);
                         if (dataResult.statusCode == 200) {
                             location.href = "assessor.php";
+
                         } else if (dataResult.statusCode == 201) {
+                             $("#login_form")[0].reset();
                             $("#error").show();
                             $("#error").html("Invalid credentials or Suspended account !").delay(3000)
                                 .fadeOut(3000);

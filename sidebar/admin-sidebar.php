@@ -14,7 +14,7 @@
         <strong> &#9776;</strong>
     </div>
     <header class="header">
-        <div class="header_search"><?php echo 'Welcome Admin '.$_SESSION['name'].'!';?></div>
+        <div class="header_search"><?php echo 'Welcome Admin ';?></div>
         <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
     </header>
     <aside class="aside">
