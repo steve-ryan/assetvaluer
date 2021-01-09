@@ -1,4 +1,4 @@
- <div class="card border-success ">
+<div class="card border-success ">
      <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
          <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
      </div>
@@ -57,40 +57,32 @@ $(document).ready(function() {
             }
         });
     });
-// Generate a report
- $('#generateBtn').on('click', function() {
-        // $("#reportBtn").attr("disabled", "disabled");
+    // Generate a report
+    $('#generateBtn').on('click', function() {
         var finalvalue = $('#finalvalue').val();
         var vehicle_id = $('#reg_no').val();
-
         if (vehicle_id != "" && finalvalue != "") {
             $.ajax({
                 url: "./api/report.php",
                 type: "POST",
                 data: {
-                    finalvalue: finalvalue,
+                    value: finalvalue,
                     vehicle_id: vehicle_id
                 },
                 cache: false,
                 success: function(dataResult) {
                     var dataResult = JSON.parse(dataResult)
                     if (dataResult.statusCode == 200) {
-                        // window.open(url,'_blank');                        
-                        // console.log("success!!");
-                         location.href = "login.html";
+                        console.log(finalvalue, vehicle_id);
                     } else if (dataResult.statusCode == 201) {
-                       alert("failed")
+                        alert("failed")
                     }
-
                 }
             });
         } else {
             alert('Please fill all the fields');
         }
-
     });
-
-
 
     //Posting a report
     $('#reportBtn').on('click', function() {
@@ -115,7 +107,7 @@ $(document).ready(function() {
                         $("#success").show();
                         $('#success').html('Report generated successfully !').delay(3000)
                             .fadeOut(3000);
-                        $("#calc").load(" #calc");
+                        $("#calc").load(" #calc > *");
 
                     } else if (dataResult.statusCode == 201) {
                         $('#error').show();
@@ -131,5 +123,6 @@ $(document).ready(function() {
 
     });
 
+    
 });
  </script>

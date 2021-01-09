@@ -75,5 +75,6 @@ $pdf->MultiCell(0, 15, $message);
 
 $reg = $data['reg_no'].$data['date'];
 }
+
 $pdf->Output();
 ?>

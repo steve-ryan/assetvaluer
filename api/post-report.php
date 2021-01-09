@@ -1,5 +1,6 @@
 <?php
 include ("./../database/config.php");
+require("./../fpdf182/fpdf.php");
 $value=$_POST['finalvalue'];
 $vehicle=$_POST['vehicle_id'];
 $query="INSERT INTO `report`( `date`,`value`,`vehicle_id`) 

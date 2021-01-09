@@ -3,10 +3,11 @@ $server = '127.0.0.1';
 $username = 'root';
 $password = '';
 $database = 'assetvaluer';
+$port = '3308';
 
 //database connection
 
-$db = new mysqli($server,$username,$password,$database);
+$db = new mysqli($server,$username,$password,$database,$port);
 
 //check connection
 
