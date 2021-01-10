@@ -6,7 +6,7 @@
          <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
      </div>
      <div class="card-body ">
-         <form action="" method="" id="valueForm" name="valueForm">
+         <form action="./admin/report1.php" method="GET" id="valueForm" name="valueForm">
              <div class="form-row">
 
                  <div class="form-group col-md-6 ">
@@ -33,8 +33,8 @@
                  </div>
              </div>
 
-             <button class="btn btn-primary" type="submit" id="reportBtn">Post Report</button>
-             <button class="btn btn-primary" type="submit" id="generateBtn">Download Report</button>
+             <button class="btn btn-primary " type="submit" id="reportBtn">Post Report</button>
+             <button class="btn btn-primary " type="submit" id="generateBtn">Download Report</button>
          </form>
      </div>
  </div>
@@ -63,7 +63,7 @@ $(document).ready(function() {
         var vehicle_id = $('#reg_no').val();
         if (vehicle_id != "" && finalvalue != "") {
             $.ajax({
-                url: "./api/report.php",
+                url: "./admin/report1.php",
                 type: "POST",
                 data: {
                     value: finalvalue,

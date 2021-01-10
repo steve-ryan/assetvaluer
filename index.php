@@ -4,6 +4,7 @@ if(!empty($_SESSION["aid"])){
     require_once './assessor.php';
 }
 ?>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -58,6 +59,8 @@ if(!empty($_SESSION["aid"])){
                                     <label for="pwd" class="sr-only">Confirm Password:</label>
                                     <input type="password" class="form-control" id="confpassword"
                                         placeholder="Confirm Password" name="confpassword" />
+                                    <small style="display: none" id="error-message" class="text-danger">Both password
+                                        fields must match.</small>
                                 </div>
                                 <input type="button" name="save" class="btn btn-primary" value="Register"
                                     id="butsave" />
@@ -82,6 +85,7 @@ if(!empty($_SESSION["aid"])){
             </div>
         </div>
     </section>
+    <script src="./js/validation.js"></script>
     <script>
     $(document).ready(function() {
         $("#login").on("click", function() {
@@ -150,9 +154,10 @@ if(!empty($_SESSION["aid"])){
                             location.href = "assessor.php";
 
                         } else if (dataResult.statusCode == 201) {
-                             $("#login_form")[0].reset();
+                            $("#login_form")[0].reset();
                             $("#error").show();
-                            $("#error").html("Invalid credentials or Suspended account !").delay(3000)
+                            $("#error").html("Invalid credentials or Suspended account !")
+                                .delay(3000)
                                 .fadeOut(3000);
                         }
                     },
