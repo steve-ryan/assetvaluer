@@ -1,0 +1,1 @@
+SELECT c.name AS owner,v.reg_no,v.yom, v.chassis_no,v.model,v.cost,b.name AS bname,t.name as tname,a.name AS aname FROM vehicle as v JOIN assessor as a ON v.assessor_id = a.assessor_id JOIN brand as b ON v.brand_id = b.brand_id JOIN type as t ON v.type_id = t.type_id JOIN client as c ON v.client_id = c.client_id WHERE v.vehicle_id='58'

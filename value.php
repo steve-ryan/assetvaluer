@@ -6,7 +6,7 @@
          <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
      </div>
      <div class="card-body ">
-         <form action="./admin/report1.php" method="GET" id="valueForm" name="valueForm">
+         <form action="" method="" id="valueForm" name="valueForm">
              <div class="form-row">
 
                  <div class="form-group col-md-6 ">
@@ -33,8 +33,7 @@
                  </div>
              </div>
 
-             <button class="btn btn-primary " type="submit" id="reportBtn">Post Report</button>
-             <button class="btn btn-primary " type="submit" id="generateBtn">Download Report</button>
+             <button class="btn btn-primary " type="submit" id="generateBtn" onclick=function report() disabled>Download Report</button>
          </form>
      </div>
  </div>
@@ -51,7 +50,9 @@ $(document).ready(function() {
                 vehicle_id: vehicle_id
             },
             success: function(data) {
-                console.log(input); {
+                $('#generateBtn').removeAttr("disabled");
+                console.log(input); 
+                {
                     input.val(data);
                 }
             }
@@ -63,11 +64,11 @@ $(document).ready(function() {
         var vehicle_id = $('#reg_no').val();
         if (vehicle_id != "" && finalvalue != "") {
             $.ajax({
-                url: "./admin/report1.php",
+                url: "./api/report.php",
                 type: "POST",
                 data: {
-                    value: finalvalue,
-                    vehicle_id: vehicle_id
+                    vehicle_id: vehicle_id,
+                    finalvalue: finalvalue
                 },
                 cache: false,
                 success: function(dataResult) {
@@ -83,46 +84,24 @@ $(document).ready(function() {
             alert('Please fill all the fields');
         }
     });
-
-    //Posting a report
-    $('#reportBtn').on('click', function() {
-        // $("#reportBtn").attr("disabled", "disabled");
-        var finalvalue = $('#finalvalue').val();
-        var vehicle_id = $('#reg_no').val();
-
-        if (vehicle_id != "" && finalvalue != "") {
-            $.ajax({
-                url: "./api/post-report.php",
-                type: "POST",
-                data: {
-                    finalvalue: finalvalue,
-                    vehicle_id: vehicle_id
-                },
-                cache: false,
-                success: function(dataResult) {
-                    var dataResult = JSON.parse(dataResult)
-                    if (dataResult.statusCode == 200) {
-                        // $("#reportBtn").removeAttr("disabled");
-                        $('#valueForm')[0].reset();
-                        $("#success").show();
-                        $('#success').html('Report generated successfully !').delay(3000)
-                            .fadeOut(3000);
-                        $("#calc").load(" #calc > *");
-
-                    } else if (dataResult.statusCode == 201) {
-                        $('#error').show();
-                        $('#error').html("Error occured !").delay(3000).fadeOut(
-                            3000);
-                    }
-
-                }
-            });
-        } else {
-            alert('Please fill all the fields');
-        }
-
-    });
-
     
 });
+
+//crazy
+// function report(){
+//     //variables needed
+//     var vehicle_id = $(this).val();
+//     var input = $("#finalvalue");
+
+//     //post to php using jquery
+//     $.post('report.php'{
+//         vehicle_id:vehicle_id,
+//         input:input,
+//         generateBtn:"#generateBtn"
+//     },
+//     function(){
+//         window.open('report.php');
+//     });
+
+// }
  </script>

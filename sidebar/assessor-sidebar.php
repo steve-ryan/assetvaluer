@@ -28,8 +28,6 @@ require("./includes/assessor-check.php");
             <li class="aside_list-item" id="client">Client</li>
             <li class="aside_list-item" id="vehicle">Vehicle</li>
             <li class="aside_list-item" id="calc">Calc Value</li>
-            <li class="aside_list-item confirmation" id="logout">Logout</li>
-        </ul>
     </aside>
 
     <!-- loading pages dynamically -->

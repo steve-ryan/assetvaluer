@@ -25,7 +25,6 @@
             <li class="aside_list-item" id="brand">Brand</li>
             <li class="aside_list-item" id="assesor">Assessors</li>
             <li class="aside_list-item" id="types">Types</li>
-            <li class="aside_list-item" id="logout">Logout</li>
         </ul>
     </aside>
 

@@ -2,8 +2,8 @@
 include_once("./../database/config.php");
 require("./../fpdf182/fpdf.php");
 
-$value=$_POST['finalvalue'];
-$vehicle=$_POST['vehicle_id'];
+$finalvalue=mysqli_real_escape_string($db,$_POST['finalvalue']);
+$vehicle=mysqli_real_escape_string($db,$_POST['vehicle_id']);
 
 $pdf = new FPDF();
 
