@@ -6,7 +6,7 @@
          <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
      </div>
      <div class="card-body ">
-         <form action="" method="" id="valueForm" name="valueForm">
+         <form action="api/report.php" method="post" id="valueForm" name="valueForm">
              <div class="form-row">
 
                  <div class="form-group col-md-6 ">
@@ -33,7 +33,7 @@
                  </div>
              </div>
 
-             <button class="btn btn-primary " type="submit" id="generateBtn" onclick=function report() disabled>Download Report</button>
+             <button class="btn btn-primary " type="submit" id="generateBtn" disabled>Download Report</button>
          </form>
      </div>
  </div>
@@ -57,51 +57,7 @@ $(document).ready(function() {
                 }
             }
         });
-    });
-    // Generate a report
-    $('#generateBtn').on('click', function() {
-        var finalvalue = $('#finalvalue').val();
-        var vehicle_id = $('#reg_no').val();
-        if (vehicle_id != "" && finalvalue != "") {
-            $.ajax({
-                url: "./api/report.php",
-                type: "POST",
-                data: {
-                    vehicle_id: vehicle_id,
-                    finalvalue: finalvalue
-                },
-                cache: false,
-                success: function(dataResult) {
-                    var dataResult = JSON.parse(dataResult)
-                    if (dataResult.statusCode == 200) {
-                        console.log(finalvalue, vehicle_id);
-                    } else if (dataResult.statusCode == 201) {
-                        alert("failed")
-                    }
-                }
-            });
-        } else {
-            alert('Please fill all the fields');
-        }
-    });
-    
+    });   
 });
-
-//crazy
-// function report(){
-//     //variables needed
-//     var vehicle_id = $(this).val();
-//     var input = $("#finalvalue");
-
-//     //post to php using jquery
-//     $.post('report.php'{
-//         vehicle_id:vehicle_id,
-//         input:input,
-//         generateBtn:"#generateBtn"
-//     },
-//     function(){
-//         window.open('report.php');
-//     });
-
-// }
  </script>
+ 

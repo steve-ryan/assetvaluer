@@ -86,7 +86,7 @@ require("./database/config.php");
                 </div>
                 <div class="form-group col-md-4">
                     <label for="name"><strong>YOM:</strong></label>
-                    <input type="date" class="form-control border-info" id="yom" name="yom" max="<?php echo date("Y-m-d"); ?>" value="">
+                    <input type="date" class="form-control border-info" id="yom" name="yom" max="<?php echo date("Y-m-d"); ?>" value="" >
                 </div>
             </div>
 

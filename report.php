@@ -2,10 +2,8 @@
 include_once("./database/config.php");
 require("./fpdf182/fpdf.php");
 
-// $value=isset($_POST['finalvalue']);
-// $vehicle=isset($_POST['vehicle_id']);
-$value = 100000;
-$vehicle = 58;
+$value=isset($_POST['finalvalue']);
+$vehicle=isset($_POST['vehicle_id']);
 
 $pdf = new FPDF();
 
