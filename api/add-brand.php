@@ -1,7 +1,7 @@
 <?php
     include ("./../database/config.php");
 $brand = mysqli_real_escape_string($db,$_POST['name']);
-$per = mysqli_real_escape_string($db,$_POST['pers']);
+$per = mysqli_real_escape_string($db,$_POST['pers']/100);
 
 $brandduplicate = mysqli_query($db,"select * from brand where name='$brand'");
 

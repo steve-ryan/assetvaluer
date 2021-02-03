@@ -67,7 +67,6 @@
                                     3000);
                             $("#client").load(" #client");
                         } else if (dataResult.statusCode == 201) {
-                            // alert("Error occured !");
                             $("#error").show();
                             $('#error').html('Client email already exists !').delay(3000)
                                 .fadeOut(
