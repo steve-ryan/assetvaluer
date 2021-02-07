@@ -34,6 +34,22 @@ CREATE TABLE brand
   PRIMARY KEY (brand_id)
 );
 
+CREATE TABLE  kondition
+(
+  condition_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(70) NOT NULL,
+  pers FLOAT NOT NULL,
+  PRIMARY KEY (condition_id)
+);
+
+CREATE TABLE accident_status
+(
+  acc_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(70) NOT NULL,
+  pers FLOAT NOT NULL,
+  PRIMARY KEY (acc_id)
+);
+
 CREATE TABLE type
 (
   type_id INT NOT NULL AUTO_INCREMENT,
@@ -41,6 +57,7 @@ CREATE TABLE type
   per FLOAT NOT NULL,
   PRIMARY KEY (type_id)
 );
+
 
 CREATE TABLE vehicle
 (
@@ -55,18 +72,13 @@ CREATE TABLE vehicle
   brand_id INT NOT NULL,
   type_id INT NOT NULL,
   assessor_id INT NOT NULL,
+  condition_id INT NOT NULL,
+  acc_id INT NOT NULL,
   PRIMARY KEY (vehicle_id),
   FOREIGN KEY (client_id) REFERENCES client(client_id),
   FOREIGN KEY (brand_id) REFERENCES brand(brand_id),
   FOREIGN KEY (type_id) REFERENCES type(type_id),
-  FOREIGN KEY (assessor_id) REFERENCES assessor(assessor_id)
-);
-
-CREATE TABLE report
-(
-  report_id INT NOT NULL AUTO_INCREMENT,
-  date DATE NOT NULL,
-  vehicle_id INT NOT NULL,
-  PRIMARY KEY (report_id),
-  FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id)
+  FOREIGN KEY (assessor_id) REFERENCES assessor(assessor_id),
+  FOREIGN KEY (condition_id) REFERENCES kondition(condition_id),
+  FOREIGN KEY (acc_id) REFERENCES accident_status(acc_id)
 );

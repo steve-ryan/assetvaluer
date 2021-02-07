@@ -32,6 +32,37 @@ require("./database/config.php");
 
             </div>
             <div class="form-row">
+                <div class="form-check form-check-inline form-group col-md-4 ">
+                    <label for=""><strong>Select Condition:</strong></label>
+                    <?php
+                        include ("./database/config.php");
+                        
+                      $query = mysqli_query($db, "SELECT condition_id ,name,pers FROM kondition");
+                         $row = mysqli_num_rows($query);
+                       while ($row = mysqli_fetch_array($query)){
+                      echo '<input type="radio" class="form-check-input" id="kondition" name="kondition" placeholder="crazy" value="'.$row['condition_id'].'"/> ' . $row['name'] ;
+
+                       }
+                    ?>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-check form-check-inline form-group col-md-6 ">
+                    <label for=""><strong>Select Accident Cond':</strong></label>
+                    <?php
+                        include ("./database/config.php");
+                        
+                      $query = mysqli_query($db, "SELECT acc_id ,name,pers FROM accident_status");
+                         $row = mysqli_num_rows($query);
+                       while ($row = mysqli_fetch_array($query)){
+                      echo '<input type="radio" class="form-check-input" id="accident" name="accident" value="'.$row['acc_id'].'"/> ' . $row['name'] ;
+
+                       }
+                    ?>
+                </div>
+            </div>
+            <div class="form-row">
 
                 <div class="form-group col-md-4 ">
                     <label for="name"><strong>Brand:</strong></label>
@@ -86,7 +117,8 @@ require("./database/config.php");
                 </div>
                 <div class="form-group col-md-4">
                     <label for="name"><strong>YOM:</strong></label>
-                    <input type="date" class="form-control border-info" id="yom" name="yom" max="<?php echo date("Y-m-d"); ?>" value="" >
+                    <input type="date" class="form-control border-info" id="yom" name="yom"
+                        max="<?php echo date("Y-m-d"); ?>" value="">
                 </div>
             </div>
 
@@ -122,6 +154,8 @@ $(document).ready(function(e) {
         e.preventDefault();
         var assessor_id = $('#assessor_id').val();
         var brand = $('#brand').val();
+        var condition = $('#kondition').val();
+        var accident = $('#accident').val();
         var type = $('#type').val();
         var client = $('#client1').val();
         var model = $('#model').val();
@@ -131,7 +165,7 @@ $(document).ready(function(e) {
         var cost = $('#cost').val();
 
 
-        if (brand != "" && assessor_id != "" && type != "" && client != "" && model != "" && yom !=
+        if (brand != "" && assessor_id != "" && condition != "" && accident != "" && type != "" && client != "" && model != "" && yom !=
             "" && reg_no != "" &&
             chassis_no != "" && cost != "") {
             $.ajax({
@@ -146,8 +180,10 @@ $(document).ready(function(e) {
                     $('#vehicleForm').css("opacity", ".5");
                 },
                 success: function(data) {
+                    //console.log(data);
+                    // console.log("waiting");
                     var data = JSON.parse(data);
-                    // console.log(data);
+                
                     if (data.statusCode == 200) {
                         $('#vehicleForm')[0].reset();
                         $('#vehicleForm').css("opacity", "");
@@ -158,7 +194,7 @@ $(document).ready(function(e) {
                         $("#vehicle").load(" #vehicle");
                     } else {
                         (data.statusCode == 201)
-                        // console.log(brand,type,client,model,yom,reg_no,chassis_no,cost);
+                        console.log("failed");
                         $("#error").show();
                         $('#error').html('upload not successful  !').delay(3000).fadeOut(
                             3000);

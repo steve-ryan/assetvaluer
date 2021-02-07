@@ -23,7 +23,7 @@ include ("./../database/config.php");
             <div class="main_overview">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -46,7 +46,7 @@ include ("./../database/config.php");
                             </div>
                         </div>
                         <!-- Valuers -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -70,7 +70,7 @@ include ("./../database/config.php");
                         </div>
 
                         <!-- Vehicles -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -92,8 +92,56 @@ include ("./../database/config.php");
                                 </div>
                             </div>
                         </div>
+                        <!-- Condition -->
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <a href="#" class="card-link">
+                                                    Conditions</a>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                    $condition = "SELECT count('condition_id') FROM kondition";
+                                                    $result=mysqli_query($db,$condition);
+                                                    $row=mysqli_fetch_array($result);
+                                                    echo "$row[0]";
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accident condition -->
+                         <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <a href="#" class="card-link">
+                                                    Accident Cond'</a>
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                    $cond = "SELECT count('acc_id') FROM accident_status";
+                                                    $result=mysqli_query($db,$cond);
+                                                    $row=mysqli_fetch_array($result);
+                                                    echo "$row[0]";
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!-- Types -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2 bg-light border-success">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -119,10 +167,10 @@ include ("./../database/config.php");
                 </div>
                 <!-- Dynamically load page -->
                 <div class="col-md-12 ">
-                        <div id="root">
-                            <p class="text-center text-success">Kindly click on any <span class="text-danger">sidebar
-                                    menu item</span>!!</p>
-                        </div>
+                    <div id="root">
+                        <p class="text-center text-success">Kindly click on any <span class="text-danger">sidebar
+                                menu item</span>!!</p>
+                    </div>
                 </div>
             </div>
         </main>

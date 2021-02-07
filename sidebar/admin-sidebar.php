@@ -15,7 +15,8 @@
     </div>
     <header class="header">
         <div class="header_search"><?php echo 'Welcome Admin ';?></div>
-        <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
+        <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span
+                    class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
     </header>
     <aside class="aside">
         <div class="aside_close-icon">
@@ -25,6 +26,8 @@
             <li class="aside_list-item" id="brand">Brand</li>
             <li class="aside_list-item" id="assesor">Assessors</li>
             <li class="aside_list-item" id="types">Types</li>
+            <li class="aside_list-item" id="condition">Conditions</li>
+             <li class="aside_list-item" id="accident">Accident Cond's</li>
         </ul>
     </aside>
 
@@ -41,6 +44,21 @@
             $("#root").load('assesor.php')
         });
     });
+    //conditions
+    $(document).ready(function() {
+        $("#condition").click(function() {
+            $("#root").load('condition.php')
+        });
+    });
+    //Accident cond'
+    $(document).ready(function() {
+        $("#accident").click(function() {
+            $("#root").load('accident.php')
+        });
+    });
+
+
+
     //Types or Categories
     $(document).ready(function() {
         $("#types").click(function() {

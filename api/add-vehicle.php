@@ -26,6 +26,8 @@ if(move_uploaded_file($tmp,$path)){
           $client = mysqli_real_escape_string($db,$_POST['client1']);
           $brand = mysqli_real_escape_string($db,$_POST['brand']);
           $type = mysqli_real_escape_string($db,$_POST['type']);
+          $kondition = mysqli_real_escape_string($db,$_POST['kondition']);
+          $accident = mysqli_real_escape_string($db,$_POST['accident']);
           $model = mysqli_real_escape_string($db,$_POST['model']);
           $reg_no = mysqli_real_escape_string($db,$_POST['reg_no']);
           $chassis_no = mysqli_real_escape_string($db,$_POST['chassis_no']);
@@ -41,9 +43,8 @@ if(move_uploaded_file($tmp,$path)){
 		echo json_encode(array("statusCode"=>201));
 	  }
 	else {
-        $sql="INSERT `vehicle` (`client_id`,`brand_id`,`type_id`,`model`,`reg_no`,`chassis_no`,`yom`,`picture`,`assessor_id`,`cost`)
-         VALUES ('".$client."','".$brand."','".$type."','".$model."','".$reg_no."','".$chassis_no."','".$yom."','".$path."','".$id."','".$cost."')";
-        if(mysqli_query($db,$sql)){
+         $sql2="INSERT INTO `vehicle`(`model`, `chassis_no`, `yom`, `reg_no`, `picture`, `cost`, `client_id`, `brand_id`, `type_id`, `assessor_id`, `condition_id`, `acc_id`) VALUES ('".$model."','".$chassis_no."','".$yom."','".$reg_no."','".$path."','".$cost."','".$client."','".$brand."','".$type."','".$id."','".$kondition."','".$accident."')";
+        if(mysqli_query($db,$sql2)){
             echo json_encode(array("statusCode"=>200));
         }
         else{

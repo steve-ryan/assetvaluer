@@ -24,7 +24,7 @@
                             </div>
 
                             <form id="login_form" name="form1" method="post">
-                                <h4>Assessor Login</h4>
+                                <h4>Admin Login</h4>
                                 <div class="form-group">
                                     <label for="pwd" class="sr-only">Email:</label>
                                     <input type="email" class="form-control" id="email_log" placeholder="Email"

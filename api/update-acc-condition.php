@@ -1,0 +1,15 @@
+<?php
+	include ("./../database/config.php");
+	$id=$_POST['id'];
+	$condition = mysqli_real_escape_string($db,$_POST['name']);
+    $per = mysqli_real_escape_string($db,$_POST['per']);
+	$sql = "UPDATE `accident_status` 
+	SET `name`='$condition', `pers`='$per' WHERE acc_id=$id";
+	if (mysqli_query($db, $sql)) {
+		echo json_encode(array("statusCode"=>200));
+	} 
+	else {
+		echo json_encode(array("statusCode"=>201));
+	}
+	mysqli_close($db);
+?>

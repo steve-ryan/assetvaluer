@@ -1,4 +1,4 @@
-<div class="types">
+<div class="brand">
     <div class="alert alert-success alert-dismissible text-center" id="success" style="display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 
@@ -6,18 +6,17 @@
     <div class="alert alert-danger alert-dismissible text-center" id="error" style="display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
     </div>
-    <form method="post" action="" id="typesForm">
+    <form action="" method="post" id="conditionForm">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control" name="typename" id="typename" value="" placeholder="Types name"
-                    required>
+                <input type="text" class="form-control" name="conditionname" id="conditionname" placeholder="Condition name" required>
             </div>
             <div class="col">
                 <input type="number" placeholder="percentage ie 10" name="pername" id="pername" class="form-control"
-                    min="0" max="100" placeholder="Last name">
+                    min="0" max="100" placeholder="Percentage" background-white>
             </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary" id="type_btn" name="type_btn">Add Type/Category</button>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" id="condition_btn" name="condition_btn">Add Condition</button>
             </div>
         </div>
 
@@ -27,38 +26,37 @@
     <div class="col-md-12">
         <div class="col-md-12">
             <div class="card border-info">
-                <div class="card-header text-black h-100 no-radius text-center"> Manage Types/Categories</div>
+                <div class="card-header text-black h-100 no-radius text-center"> Manage Condition</div>
                 <div class="card-body">
 
                     <table class="table table-sm table-hover">
                         <thead class="table-success">
                             <tr>
 
-                                <th scope="col">Types/Categories</th>
+                                <th scope="col">Condition</th>
                                 <th scope="col">Per(%)</th>
                                 <th colspan="2">ACTIONS</th>
                             </tr>
                         </thead>
-                        <tbody id="type-table">
+                        <tbody id="condition-table">
 
                         </tbody>
                     </table>
                 </div>
-
-                <!-- type update modal -->
-                <div class="modal fade" id="update_type" role="dialog">
+                <!-- Condition update modal -->
+                <div class="modal fade" id="update_condition" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header bg-success" style="color:#fff;padding:6px;">
-                                <h5 class="modal-title"><i class="fa fa-edit"></i> Update Type</h5>
+                                <h5 class="modal-title"><i class="fa fa-edit"></i> Update Condition</h5>
 
                             </div>
                             <div class="modal-body">
 
-                                <!--type name-->
+                                <!--Condition name-->
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label>Type Name</label>
+                                        <label>Condition Name</label>
                                     </div>
                                     <div class="col-md-9">
                                         <input type="text" name="name_modal" id="name_modal" class="form-control-sm"
@@ -91,105 +89,110 @@
                         </div>
                     </div>
                 </div>
-                <!-- modal end -->
-
+                <!-- Modal End-->
 
             </div>
         </div>
     </div>
 
     <script>
+    // Adding Condition
     $(document).ready(function() {
-        $('#type_btn').on('click', function() {
-            $('#type_btn').attr("disabled", "disabled");
-            var name = $('#typename').val();
-            var pers = $('#pername').val();
+        $('#condition_btn').on('click', function() {
+            $("#condition_btn").attr("disabled", "disabled");
+            var name = $('#conditionname').val();
+            var per = $('#pername').val();
 
-            if (name != "" && pers != "") {
+            if (condition != "" && per != "") {
                 $.ajax({
-                    url: "./../api/add-type.php",
+                    url: "./../api/add-condition.php",
                     type: "POST",
                     data: {
                         name: name,
-                        per: pers
+                        pers: per
                     },
                     cache: false,
                     success: function(dataResult) {
                         var dataResult = JSON.parse(dataResult);
                         if (dataResult.statusCode == 200) {
-                            $('#type_btn').removeAttr("disabled");
-                            $('#typesForm')[0].reset();
-                            $("#success").show();
-                            $('#success').html('Type/Category added successfully !').delay(
-                                3000).fadeOut(3000);
+                            console.log(dataResult);
 
+                            $("#condition_btn").removeAttr("disabled");
+                            $('#conditionForm')[0].reset();
+                            $("#success").show();
+                            $('#success').html(
+                                    'Condition details added successfully !').delay(3000)
+                                .fadeOut(
+                                    3000);
+                            $("#condition").load(" #condition");
                         } else if (dataResult.statusCode == 201) {
+                            // alert("Error occured !");
                             $("#error").show();
-                            $('#error').html('Type already exists !').delay(3000).fadeOut(
+                            $('#error').html('Condition already exists !').delay(3000).fadeOut(
                                 3000);
                         }
 
                     }
                 });
             } else {
-                $("#error").show();
-               $('#error').html('Fill all type details!').delay(3000).fadeOut(3000);
+                 $("#error").show();
+            $('#error').html('Fill condition details!').delay(3000).fadeOut(3000);
             }
         });
-
-        //view type
+       
+        //view condition
         $.ajax({
-            url: "./../api/view-type.php",
+            url: "./../api/view-condition.php",
             type: "POST",
             cache: false,
             success: function(dataResult) {
-                $('#type-table').html(dataResult);
+                $('#condition-table').html(dataResult);
             }
         });
-        //update type
-        $(function() {
-            $('#update_type').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var id = button.data('id');
-                var name = button.data('name');
-                var per = button.data('per');
-                var modal = $(this);
-                modal.find('#name_modal').val(name);
-                modal.find('#per_modal').val(per);
-                modal.find('#id_modal').val(id);
-            });
-        });
-        $(document).on("click", "#update_data", function() {
-            $.ajax({
-                url: "./../api/update-type.php",
-                type: "POST",
-                cache: false,
-                data: {
-                    id: $('#id_modal').val(),
-                    name: $('#name_modal').val(),
-                    per: $('#per_modal').val(),
-                },
-                success: function(dataResult) {
-                    var dataResult = JSON.parse(dataResult);
-                    if (dataResult.statusCode == 200) {
-                        $('#update_type').modal().hide();
-                        alert('Data updated successfully !');
-                        location.reload();
-                    }
-                }
-            });
-        });
+        
+         //update condition
+        $(function () {
+		$('#update_condition').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget); 
+			var id = button.data('id');
+			var name = button.data('name');
+			var per = button.data('per');
+			var modal = $(this);
+			modal.find('#name_modal').val(name);
+			modal.find('#per_modal').val(per);
+			modal.find('#id_modal').val(id);
+		});
+    });
+	$(document).on("click", "#update_data", function() { 
+		$.ajax({
+			url: "./../api/update-condition.php",
+			type: "POST",
+			cache: false,
+			data:{
+				id: $('#id_modal').val(),
+				name: $('#name_modal').val(),
+				per: $('#per_modal').val(),
+			},
+			success: function(dataResult){
+				var dataResult = JSON.parse(dataResult);
+				if(dataResult.statusCode==200){
+					$('#update_condition').modal().hide();
+					alert('Data updated successfully !');
+					$("#condition").load(" #condition");					
+				}
+			}
+		});
+	}); 
 
-
-        //Deleting a type
+        //Deleting a condition
         $(document).on("click", ".delete", function() {
             var $ele = $(this).parent().parent();
             $.ajax({
-                url: "./../api/delete-type.php",
+                url: "./../api/delete-condition.php",
                 type: "POST",
                 cache: false,
                 data: {
-                    type_id: $(this).attr("data-id")
+                    condition_id: $(this).attr("data-id")
                 },
                 success: function(dataResult) {
                     console.log("success");
@@ -203,3 +206,6 @@
         });
     });
     </script>
+    <script src="./../js/popper.min.js"></script>
+    <script src="./../js/bootstrap.min.js"></script>
+    </body>
