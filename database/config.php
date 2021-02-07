@@ -3,7 +3,7 @@ $server = '127.0.0.1';
 $username = 'root';
 $password = '';
 $database = 'assetvaluer';
-$port = '3308';
+$port = '3306';
 
 //database connection
 

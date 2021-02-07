@@ -2,7 +2,7 @@
 	include ("./../database/config.php");
 	$id=$_POST['id'];
 	$brand = mysqli_real_escape_string($db,$_POST['name']);
-    $per = mysqli_real_escape_string($db,$_POST['per']);
+    $per = mysqli_real_escape_string($db,$_POST['per']/100);
 	$sql = "UPDATE `brand` 
 	SET `name`='$brand', `pers`='$per' WHERE brand_id=$id";
 	if (mysqli_query($db, $sql)) {

@@ -23,7 +23,7 @@ $pdf->SetDrawColor(209, 212, 255);
 $pdf->SetFont('Arial', '', 12);
 
 
-$query = mysqli_query($db,"SELECT c.name AS owner,v.reg_no,v.yom, v.chassis_no,v.model,v.cost,b.name AS bname,t.name as tname,a.name AS aname FROM vehicle as v JOIN assessor as a ON v.assessor_id = a.assessor_id JOIN brand as b ON v.brand_id = b.brand_id JOIN type as t ON v.type_id = t.type_id JOIN client as c ON v.client_id = c.client_id WHERE v.vehicle_id='$vehicle'");
+$query = mysqli_query($db,"SELECT c.name AS owner,v.reg_no,v.yom,k.name AS conditionname,ac.name AS accident, v.chassis_no,v.model,v.cost,b.name AS bname,t.name as tname,a.name AS aname FROM vehicle as v JOIN assessor as a ON v.assessor_id = a.assessor_id JOIN kondition  as k ON v.condition_id = k.condition_id JOIN accident_status as ac ON v.acc_id = ac.acc_id JOIN brand as b ON v.brand_id = b.brand_id JOIN type as t ON v.type_id = t.type_id JOIN client as c ON v.client_id = c.client_id WHERE v.vehicle_id='$vehicle'");
 while($data=mysqli_fetch_array($query)){
 $pdf->Cell(80,10,'Report For Vehicle ::'.$data['reg_no'],1,1,'C',true);
 
@@ -56,6 +56,12 @@ $pdf->Cell(58, 5, $data['yom'], 0, 1);
 
 $pdf->Cell(55, 5, 'Intial Cost::', 0, 0);
 $pdf->Cell(58, 5, $data['cost'], 0, 1);
+
+$pdf->Cell(55, 5, 'Car Condition::', 0, 0);
+$pdf->Cell(58, 5, $data['conditionname'], 0, 1);
+
+$pdf->Cell(55, 5, 'Accident Status::', 0, 0);
+$pdf->Cell(58, 5, $data['accident'], 0, 1);
 
 $pdf->Line(10, 60, 200, 60);
 

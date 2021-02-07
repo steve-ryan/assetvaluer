@@ -2,7 +2,7 @@
 	include ("./../database/config.php");
 	$id=$_POST['id'];
 	$type =mysqli_real_escape_string($db,$_POST['name']);
-    $pers = mysqli_real_escape_string($db,$_POST['per']);
+    $pers = mysqli_real_escape_string($db,$_POST['per']/100);
 	$sql = "UPDATE `type` 
 	SET `name`='$type', `per`='$pers' WHERE type_id=$id";
 	if (mysqli_query($db, $sql)) {
