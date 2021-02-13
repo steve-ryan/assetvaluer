@@ -45,7 +45,7 @@ require("./../includes/company-check.php");
     });
     //reports
     $(document).ready(function() {
-        $("#report").click(function() {
+        $("#reports").click(function() {
             $("#root").load('report.php')
         });
     });
