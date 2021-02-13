@@ -14,7 +14,7 @@ require("./database/config.php");
 
         <form action="" method="post" id="vehicleForm" name="vehicleForm" enctype="multipart/form-data">
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for=""><strong>Select Client:</strong></label>
                     <select name="client1" id="client1" class="form-control">
                         <option selected="true" disabled="disabled">Choose..</option>
@@ -23,6 +23,21 @@ require("./database/config.php");
                          $row = mysqli_num_rows($query);
                        while ($row = mysqli_fetch_array($query)){
                       echo "<option value='". $row['client_id'] ."'>" .$row['name'] ." </option>" ;
+
+                       }
+                       
+                    ?>
+                    </select>
+                </div>
+                 <div class="form-group col-md-6">
+                    <label for=""><strong>Select Company:</strong></label>
+                    <select name="company" id="company" class="form-control">
+                        <option selected="true" disabled="disabled">Choose..</option>
+                        <?php
+                      $company = mysqli_query($db, "SELECT company_id, company_name FROM company ORDER BY company_name ASC");
+                         $row = mysqli_num_rows($company);
+                       while ($row = mysqli_fetch_array($company)){
+                      echo "<option value='". $row['company_id'] ."'>" .$row['company_name'] ." </option>" ;
 
                        }
                        
@@ -155,6 +170,7 @@ $(document).ready(function(e) {
         var assessor_id = $('#assessor_id').val();
         var brand = $('#brand').val();
         var condition = $('#kondition').val();
+        var company = $('#company').val();
         var accident = $('#accident').val();
         var type = $('#type').val();
         var client = $('#client1').val();
@@ -165,7 +181,9 @@ $(document).ready(function(e) {
         var cost = $('#cost').val();
 
 
-        if (brand != "" && assessor_id != "" && condition != "" && accident != "" && type != "" && client != "" && model != "" && yom !=
+        // console.log(company);
+
+        if (company != "" && brand != "" && assessor_id != "" && condition != "" && accident != "" && type != "" && client != "" && model != "" && yom !=
             "" && reg_no != "" &&
             chassis_no != "" && cost != "") {
             $.ajax({
@@ -180,8 +198,6 @@ $(document).ready(function(e) {
                     $('#vehicleForm').css("opacity", ".5");
                 },
                 success: function(data) {
-                    //console.log(data);
-                    // console.log("waiting");
                     var data = JSON.parse(data);
                 
                     if (data.statusCode == 200) {

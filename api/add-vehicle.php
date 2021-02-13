@@ -24,6 +24,7 @@ $path = $path.strtolower($final_image);
 if(move_uploaded_file($tmp,$path)){
 
           $client = mysqli_real_escape_string($db,$_POST['client1']);
+          $company = mysqli_real_escape_string($db,$_POST['company']);
           $brand = mysqli_real_escape_string($db,$_POST['brand']);
           $type = mysqli_real_escape_string($db,$_POST['type']);
           $kondition = mysqli_real_escape_string($db,$_POST['kondition']);
@@ -38,12 +39,12 @@ if(move_uploaded_file($tmp,$path)){
         // Duplicate reg_no
         $reg_no =mysqli_real_escape_string($db,$_POST['reg_no']);
 	
-	      $regduplicate=mysqli_query($db,"select * from vehicle where reg_no='$reg_no'");
+	      $regduplicate=mysqli_query($db,"select * from vehicle where reg_no='$reg_no' AND company ='$company'");
 	  if (mysqli_num_rows($regduplicate)>0){
 		echo json_encode(array("statusCode"=>201));
 	  }
 	else {
-         $sql2="INSERT INTO `vehicle`(`model`, `chassis_no`, `yom`, `reg_no`, `picture`, `cost`, `client_id`, `brand_id`, `type_id`, `assessor_id`, `condition_id`, `acc_id`) VALUES ('".$model."','".$chassis_no."','".$yom."','".$reg_no."','".$path."','".$cost."','".$client."','".$brand."','".$type."','".$id."','".$kondition."','".$accident."')";
+         $sql2="INSERT INTO `vehicle`(`company_id`,`model`, `chassis_no`, `yom`, `reg_no`, `picture`, `cost`, `client_id`, `brand_id`, `type_id`, `assessor_id`, `condition_id`, `acc_id`) VALUES ('".$company."','".$model."','".$chassis_no."','".$yom."','".$reg_no."','".$path."','".$cost."','".$client."','".$brand."','".$type."','".$id."','".$kondition."','".$accident."')";
         if(mysqli_query($db,$sql2)){
             echo json_encode(array("statusCode"=>200));
         }

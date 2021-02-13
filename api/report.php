@@ -2,7 +2,7 @@
 include_once("./../database/config.php");
 require("./../fpdf182/fpdf.php");
 $value=mysqli_real_escape_string($db,$_POST['finalvalue']);
-$vehicle=mysqli_real_escape_string($db,$_POST['reg_no']);
+$vehicle=mysqli_real_escape_string($db,$_POST['sel_reg']);
 $date=date('Y-m-d');
 
 

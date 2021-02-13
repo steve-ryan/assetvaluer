@@ -28,6 +28,7 @@
             <li class="aside_list-item" id="types">Types</li>
             <li class="aside_list-item" id="condition">Conditions</li>
              <li class="aside_list-item" id="accident">Accident Cond's</li>
+            <li class="aside_list-item" id="company">Organization</li>
         </ul>
     </aside>
 
@@ -63,6 +64,13 @@
     $(document).ready(function() {
         $("#types").click(function() {
             $("#root").load('types.php')
+        });
+    });
+
+    //Company
+    $(document).ready(function() {
+        $("#company").click(function() {
+            $("#root").load('company.php')
         });
     });
 
