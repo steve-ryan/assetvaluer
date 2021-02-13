@@ -2,7 +2,14 @@
 	include ("./../database/config.php");
     require ("./../includes/company-check.php");
     $cid=$_SESSION['cid'];
-	$sql = "SELECT v.reg_no,v.model,b.name AS brand,t.name AS type,v.yom,v.picture,k.name AS kond,ac.name AS name,v.chassis_no ,company_id FROM vehicle v JOIN kondition k on k.condition_id = v.condition_id JOIN accident_status as ac ON v.acc_id = ac.acc_id JOIN brand b ON v.brand_id = b.brand_id JOIN type t ON v.type_id = t.type_id WHERE company_id =  '$cid'";
+	$sql = "
+    SELECT v.reg_no,v.vehicle_id,MAX(kdate),v.model,b.name AS brand,t.name AS type,v.yom,v.picture, k.name AS kond,ac.name AS name,v.chassis_no ,r.company_id FROM report r 
+    JOIN vehicle v ON r.vehicle_id = v.vehicle_id 
+    JOIN kondition k on k.condition_id = v.condition_id 
+    JOIN accident_status as ac ON v.acc_id = ac.acc_id 
+    JOIN brand b ON v.brand_id = b.brand_id 
+    JOIN type t ON v.type_id = t.type_id WHERE r.company_id ='$cid' GROUP BY vehicle_id
+    ";
 	$result = $db->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
@@ -20,7 +27,7 @@
     <td><?=$row['name'];?></td>
     <td>
     <div class="d-flex justify-content-center">
-        <button class="btn btn-sm btn-default"  type="submit" id="postbtn" ><a href=./../api/general-report.php?id=<?=$row['reg_no'];?> style="text-decoration:none"> Download</a></button>
+        <button class="btn btn-sm btn-default"  type="submit" id="postbtn" ><a href=./../api/general-report.php?id=<?=$row['vehicle_id'];?> style="text-decoration:none"> Download</a></button>
     </div>
     </td>
 

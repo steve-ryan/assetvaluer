@@ -13,11 +13,11 @@ require ("./../includes/company-check.php");
                         <th scope="col">Model</th>
                         <th scope="col">Brand</th>
                         <th scope="col">Type</th>
-                        <th scope="col">Y.O.M</th>
+                        <th scope="col">YOM</th>
                         <th scope="col">Picture</th>
                         <th scope="col">Chassis No</th>
                         <th scope="col">Condition</th>
-                        <th scope="col">Accident Cond'</th>
+                        <th scope="col">Accident</th>
                         <th scope="col">Download Report'</th>
                     </tr>
                 </thead>
