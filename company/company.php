@@ -59,7 +59,7 @@ require ("./../includes/company-check.php");
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
                                                     $cid=$_SESSION['cid'];
-                                                    $report = "SELECT count('report_id') FROM report WHERE company_id='$cid'";
+                                                    $report = "SELECT count(DISTINCT vehicle_id) FROM report WHERE company_id='$cid'";
                                                     $result=mysqli_query($db,$report);
                                                     $row=mysqli_fetch_array($result);
                                                     echo "$row[0]";

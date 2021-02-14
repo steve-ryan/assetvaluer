@@ -164,9 +164,9 @@ require("./database/config.php");
 </div>
 
 <script>
-$(document).ready(function(e) {
-    $("#vehicleForm").on('submit', function(e) {
-        e.preventDefault();
+$(document).ready(function() {
+    $("#vehicleForm").on('submit', function() {
+        // e.preventDefault();
         var assessor_id = $('#assessor_id').val();
         var brand = $('#brand').val();
         var condition = $('#kondition').val();

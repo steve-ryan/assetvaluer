@@ -39,7 +39,7 @@ if(move_uploaded_file($tmp,$path)){
         // Duplicate reg_no
         $reg_no =mysqli_real_escape_string($db,$_POST['reg_no']);
 	
-	      $regduplicate=mysqli_query($db,"select * from vehicle where reg_no='$reg_no' AND company ='$company'");
+	      $regduplicate=mysqli_query($db,"select * from vehicle where reg_no='$reg_no' AND company_id ='$company'");
 	  if (mysqli_num_rows($regduplicate)>0){
 		echo json_encode(array("statusCode"=>201));
 	  }
