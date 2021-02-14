@@ -41,6 +41,9 @@ if(!empty($_SESSION["cid"])){
                                 <button type="button" class="btn btn-info btn-sm" id="login">
                                     Login
                                 </button>
+                                 <a href="./../#"> <button type="button" class="btn btn-danger btn-sm" >
+                                   Home
+                                </button></a>
                             </div>
                             <form action="" id="register_form" name="form1" class="justify-content-center assessor">
                                 <h5 class="text-centre">Company Registration</h5>

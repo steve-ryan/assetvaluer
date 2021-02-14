@@ -6,7 +6,7 @@ body {
 }
 
 div.container {
-    height: 60%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@ div.container {
 }
 
 nav {
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     display: flex;
     flex-direction: column;

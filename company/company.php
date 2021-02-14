@@ -1,5 +1,6 @@
 <?php 
 include ("./../database/config.php");
+require ("./../includes/company-check.php");
 ?>
 
 <html lang="en">
@@ -99,7 +100,7 @@ include ("./../database/config.php");
                 </div>
                 <!-- Dynamically load page -->
                 <div class="col-md-12 ">
-                    <div id="root">
+                    <div id="root" rel="root">
                         <p class="text-center text-success">Kindly click on any <span class="text-danger">sidebar
                                 menu item</span>!!</p>
                     </div>
@@ -111,6 +112,7 @@ include ("./../database/config.php");
     <script src="./../js/popper.min.js"></script>
     <script src="./../js/bootstrap.min.js"></script>
     <script src="./../js/bootstrap.js"></script>
+
 
 </body>
 

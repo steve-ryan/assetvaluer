@@ -40,6 +40,10 @@ if(!empty($_SESSION["aid"])){
                                 <button type="button" class="btn btn-success btn-sm" id="login">
                                     Login
                                 </button>
+                                </button>
+                                 <a href="./#"> <button type="button" class="btn btn-danger btn-sm" >
+                                   Home
+                                </button></a>
                             </div>
                             <form action="" id="register_form" name="form1" class="justify-content-center assessor">
                                 <h5 class="text-centre">Assessor Registration</h5>

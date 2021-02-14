@@ -36,6 +36,11 @@
                                         name="password-l" />
                                 </div>
                                 <input type="button" name="save" class="btn btn-primary" value="Login" id="btnlogin" />
+
+                                </button>
+                                 <a href="./../#"> <button type="button" class="btn btn-danger" >
+                                   Home
+                                </button></a>
                             </form>
                         </div>
                     </div>
