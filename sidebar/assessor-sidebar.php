@@ -32,6 +32,11 @@ require("./includes/assessor-check.php");
 
     <!-- loading pages dynamically -->
     <script>
+    //crazy
+    $(document).ready(function() {  
+            $("#root").load('client.php')   
+    });
+
     $(document).ready(function() {
         $("#client").click(function() {
             $("#root").load('client.php')

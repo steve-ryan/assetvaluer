@@ -32,6 +32,12 @@ require("./../includes/company-check.php");
 
     <!-- loading pages dynamically -->
     <script>
+    //on load
+     $(document).ready(function() {
+            $("#root").load('client.php')
+       
+    });
+
     $(document).ready(function() {
         $("#client").click(function() {
             $("#root").load('client.php')

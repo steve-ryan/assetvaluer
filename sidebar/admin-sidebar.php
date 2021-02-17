@@ -35,6 +35,11 @@
     <!-- loading pages dynamically -->
     <script>
     $(document).ready(function() {
+            $("#root").load('brand.php')
+       
+    });
+
+    $(document).ready(function() {
         $("#brand").click(function() {
             $("#root").load('brand.php')
         });
