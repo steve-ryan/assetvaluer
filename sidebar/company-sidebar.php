@@ -29,7 +29,7 @@ require("./../includes/company-check.php");
             <li class="aside_list-item" id="vehicle">Vehicle</li>
              <li class="aside_list-item" id="reports">Reports</li>
             <li class="aside_list-item" id="pwd">Password Setting</li>
-            <li class="aside_list-item confirmation" id="logout">Logout</li>
+            <li class="aside_list-item" id="logout">Logout</li>
     </aside>
 
     <!-- loading pages dynamically -->

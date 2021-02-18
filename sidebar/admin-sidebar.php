@@ -37,7 +37,7 @@ require("./../includes/admin-check.php");
             <li class="aside_list-item" id="accident">Accident Cond's</li>
             <li class="aside_list-item" id="company">Organization</li>
             <li class="aside_list-item" id="pwd">Password Setting</li>
-             <li class="aside_list-item confirmation" id="logout">Logout</li>
+             <li class="aside_list-item" id="logout">Logout</li>
         </ul>
     </aside>
 
