@@ -28,6 +28,8 @@ require("./../includes/company-check.php");
             <li class="aside_list-item" id="client">Client</li>
             <li class="aside_list-item" id="vehicle">Vehicle</li>
              <li class="aside_list-item" id="reports">Reports</li>
+            <li class="aside_list-item" id="pwd">Password Setting</li>
+            <li class="aside_list-item confirmation" id="logout">Logout</li>
     </aside>
 
     <!-- loading pages dynamically -->
@@ -36,6 +38,18 @@ require("./../includes/company-check.php");
      $(document).ready(function() {
             $("#root").load('client.php')
        
+    });
+    //logout
+      $(document).ready(function() {
+        $("#logout").click(function() {
+             window.location = 'logout.php';
+        });
+    });
+    //password settings
+    $(document).ready(function() {
+        $("#pwd").click(function() {
+            $("#root").load('password.php')
+        });
     });
 
     $(document).ready(function() {

@@ -17,7 +17,8 @@ require("./includes/assessor-check.php");
         <strong> &#9776;</strong>
     </div>
     <header class="header">
-        <div class="header_search"><?php echo 'Welcome '.$_SESSION['aname'].' '.$_SESSION['aid'].'!';?></div>
+        <div class="header_search">Welcome assessor <span
+                style="color:green;"><?php echo ''.$_SESSION['aname'].'!';?></div>
         <div class="header_avatar"><a href="./logout.php" class="nav-link logout"> <span class="d-none d-sm-inline confirmation">Logout</span><i class="fa fa-sign-out"></i></a></div>
     </header>
     <aside class="aside">
@@ -28,6 +29,8 @@ require("./includes/assessor-check.php");
             <li class="aside_list-item" id="client">Client</li>
             <li class="aside_list-item" id="vehicle">Vehicle</li>
             <li class="aside_list-item" id="calc">Calc Value</li>
+            <li class="aside_list-item" id="pwd">Password Setting</li>
+           <li class="aside_list-item confirmation" id="logout">Logout</li> 
     </aside>
 
     <!-- loading pages dynamically -->
@@ -35,6 +38,18 @@ require("./includes/assessor-check.php");
     //crazy
     $(document).ready(function() {  
             $("#root").load('client.php')   
+    });
+    //password settings
+    $(document).ready(function() {
+        $("#pwd").click(function() {
+            $("#root").load('password.php')
+        });
+    });
+    //logout
+      $(document).ready(function() {
+        $("#logout").click(function() {
+             window.location = 'logout.php';
+        });
     });
 
     $(document).ready(function() {
