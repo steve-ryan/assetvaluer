@@ -1,3 +1,6 @@
+<?php
+require("./../includes/admin-check.php");
+?>
 <div class="brand">
     <div class="alert alert-success alert-dismissible text-center" id="success" style="display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>

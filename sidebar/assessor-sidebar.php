@@ -26,7 +26,7 @@ require("./includes/assessor-check.php");
             <strong>&times;</strong>
         </div>
         <ul class="aside_list">
-            <li class="aside_list-item" id="client">Client</li>
+            <li class="aside_list-item" id="client1">Client</li>
             <li class="aside_list-item" id="vehicle">Vehicle</li>
             <li class="aside_list-item" id="calc">Calc Value</li>
             <li class="aside_list-item" id="pwd">Password Setting</li>
@@ -53,7 +53,7 @@ require("./includes/assessor-check.php");
     });
 
     $(document).ready(function() {
-        $("#client").click(function() {
+        $("#client1").click(function() {
             $("#root").load('client.php')
         });
     });

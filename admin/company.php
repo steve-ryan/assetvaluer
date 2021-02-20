@@ -1,3 +1,6 @@
+<?php
+require("./../includes/admin-check.php");
+?>
 <div class="card">
     <div class="card-header text-black h-100 no-radius text-center"> Manage Company/Insurance</div>
 

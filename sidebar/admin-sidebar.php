@@ -29,8 +29,7 @@ require("./../includes/admin-check.php");
             <img src="./../uploads/test.png" width="100" height="100" style="border-radius:50%; border:1px solid white;">
         </div> -->
         <ul class="aside_list">
-            <li class="aside_list-item" id="brand"></li>
-            <li class="aside_list-item" id="brand">Brand</li>
+            <li class="aside_list-item" id="brand1">Brand</li>
             <li class="aside_list-item" id="assesor">Assessors</li>
             <li class="aside_list-item" id="types">Types</li>
             <li class="aside_list-item" id="condition">Conditions</li>
@@ -55,7 +54,7 @@ require("./../includes/admin-check.php");
     });
     //brand
     $(document).ready(function() {
-        $("#brand").click(function() {
+        $("#brand1").click(function() {
             $("#root").load('brand.php')
         });
     });

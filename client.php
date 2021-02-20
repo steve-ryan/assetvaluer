@@ -1,3 +1,6 @@
+<?php
+require("./includes/assessor-check.php");
+?>
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-12 col-md-12 col-lg-6">
