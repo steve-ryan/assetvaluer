@@ -1,3 +1,6 @@
+<?php
+require("./../includes/admin-check.php");
+?>
 <div class="types">
     <div class="alert alert-success alert-dismissible text-center" id="success" style="display:none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -153,9 +156,11 @@
                 var id = button.data('id');
                 var name = button.data('name');
                 var per = button.data('per');
+                //converting it into whole value by multiplying by 100
+                var per2 = (per*100);
                 var modal = $(this);
                 modal.find('#name_modal').val(name);
-                modal.find('#per_modal').val(per);
+                modal.find('#per_modal').val(per2);
                 modal.find('#id_modal').val(id);
             });
         });

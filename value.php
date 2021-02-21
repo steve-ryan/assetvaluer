@@ -1,6 +1,8 @@
 <?php
 include ("./database/config.php");
+require("./includes/assessor-check.php");
 ?>
+
 
 <div class="card border-success ">
     <div class="alert alert-success alert-dismissible" id="success" style="display:none;">

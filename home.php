@@ -3,8 +3,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(!empty($_SESSION["cid"])){
-    require_once './company.php';
+if(!empty($_SESSION["aid"])){
+    require_once './assessor.php';
 }
 ?>
 
@@ -14,14 +14,13 @@ if(!empty($_SESSION["cid"])){
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./../css/assessor.css" />
-    <script src="./../js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/assessor.css" />
+    <script src="./js/jquery.js"></script>
 </head>
 
 <body>
     <section id="cover" class="min-vh-100">
-    
         <div id="cover-caption">
             <div class="container">
                 <div class="row text-white">
@@ -35,18 +34,19 @@ if(!empty($_SESSION["cid"])){
                             </div>
 
                             <div class="switch">
-                                <button type="button" class="btn btn-info btn-sm" id="register">
+                                <button type="button" class="btn btn-success btn-sm" id="register">
                                     Register
                                 </button>
-                                <button type="button" class="btn btn-info btn-sm" id="login">
+                                <button type="button" class="btn btn-success btn-sm" id="login">
                                     Login
                                 </button>
-                                 <a href="./../#"> <button type="button" class="btn btn-danger btn-sm" >
+                                </button>
+                                 <a href="./#"> <button type="button" class="btn btn-danger btn-sm" >
                                    Home
                                 </button></a>
                             </div>
                             <form action="" id="register_form" name="form1" class="justify-content-center assessor">
-                                <h5 class="text-centre">Company Registration</h5>
+                                <h5 class="text-centre">Assessor Registration</h5>
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Name:</label>
                                     <input type="text" class="form-control" id="name" placeholder="Name" name="name" />
@@ -73,7 +73,7 @@ if(!empty($_SESSION["cid"])){
                                     id="butsave" />
                             </form>
                             <form id="login_form" name="form1" method="post" style="display: none">
-                                <h4>Company Login</h4>
+                                <h4>Assessor Login</h4>
                                 <div class="form-group">
                                     <label for="pwd" class="sr-only">Email:</label>
                                     <input type="email" class="form-control" id="email_log" placeholder="Email"
@@ -92,7 +92,7 @@ if(!empty($_SESSION["cid"])){
             </div>
         </div>
     </section>
-    <script src="./../js/validation.js"></script>
+    <script src="./js/validation.js"></script>
     <script>
     $(document).ready(function() {
         $("#login").on("click", function() {
@@ -110,7 +110,7 @@ if(!empty($_SESSION["cid"])){
             var password = $("#password").val();
             if (name != "" && email != "" && password != "") {
                 $.ajax({
-                    url: "./../api/login_company.php",
+                    url: "./api/login_register.php",
                     type: "POST",
                     data: {
                         type: 1,
@@ -145,9 +145,9 @@ if(!empty($_SESSION["cid"])){
             var password = $("#password_log").val();
 
             if (email != "" && password != "") {
-                
+                console.log(email, password);
                 $.ajax({
-                    url: "./../api/login_company.php",
+                    url: "./api/login_register.php",
                     type: "POST",
                     data: {
                         type: 2,
@@ -156,10 +156,9 @@ if(!empty($_SESSION["cid"])){
                     },
                     cache: false,
                     success: function(dataResult) {
-                        console.log("here...");
                         var dataResult = JSON.parse(dataResult);
                         if (dataResult.statusCode == 200) {
-                            location.href = "company.php";
+                            location.href = "assessor.php";
 
                         } else if (dataResult.statusCode == 201) {
                             $("#login_form")[0].reset();
@@ -177,8 +176,8 @@ if(!empty($_SESSION["cid"])){
         });
     });
     </script>
-    <script src="./../js/popper.min.js"></script>
-    <script src="./../js/bootstrap.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
 </body>
 
 </html>
