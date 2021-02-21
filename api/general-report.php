@@ -29,7 +29,7 @@ $pdf->SetDrawColor(209, 212, 255);
 $pdf->SetFont('Arial', '', 12);
 
 
-$query = mysqli_query($db,"SELECT distinct r.company_id, c.name AS owner,r.final_cost AS value,MAX(r.kdate) AS kdate,r.company_id,v.reg_no,v.yom,k.name AS conditionname,
+$query = mysqli_query($db,"SELECT distinct r.vehicle_id, c.name AS owner,r.final_cost AS value,MAX(r.kdate) AS kdate,r.company_id,v.reg_no,v.yom,k.name AS conditionname,
 ac.name AS accident, v.chassis_no,v.model,v.cost,b.name AS bname,
 t.name as tname,a.name AS aname FROM report r
 JOIN vehicle as v ON r.vehicle_id = v.vehicle_id
