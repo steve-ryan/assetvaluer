@@ -2,12 +2,13 @@
 	include ("./../database/config.php");
 	$sql = "SELECT company_id,company_name,email,status FROM company;";
 	$result = $db->query($sql);
+    $no=1;
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 
 ?>
 <tr>
-    <td><?=$row['company_id'];?></td>
+    <td><?php echo "$no"?></td>
     <td><?=$row['company_name'];?></td>
     <td><?=$row['email'];?></td>
     <td>
@@ -31,6 +32,7 @@
     <td><button type="button" class="btn btn-danger btn-sm delete" data-id=<?=$row['company_id'];?>>Delete</button></td>
 </tr>
 <?php	
+$no++;
 	}
 	}
 	else {

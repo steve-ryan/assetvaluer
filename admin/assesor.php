@@ -6,7 +6,7 @@
             <thead class="table-success">
                 <tr>
 
-                    <th scope="col">#ID</th>
+                    <th scope="col">#No:</th>
                     <th scope="col">name</th>
                     <th scope="col">email address</th>
                     <th scope="col">Status</th>

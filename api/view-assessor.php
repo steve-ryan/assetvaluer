@@ -2,12 +2,13 @@
 	include ("./../database/config.php");
 	$sql = "SELECT assessor_id,name,email,status FROM assessor;";
 	$result = $db->query($sql);
+    $no = 1;
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 
 ?>
 <tr>
-    <td><?=$row['assessor_id'];?></td>
+    <td><?php echo "$no"?></td>
     <td><?=$row['name'];?></td>
     <td><?=$row['email'];?></td>
     <td>
@@ -30,7 +31,8 @@
     </td>
     <td><button type="button" class="btn btn-danger btn-sm delete" data-id=<?=$row['assessor_id'];?>>Delete</button></td>
 </tr>
-<?php	
+<?php
+$no++;	
 	}
 	}
 	else {
