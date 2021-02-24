@@ -4,7 +4,7 @@
 	$brand = mysqli_real_escape_string($db,$_POST['name']);
     $per = mysqli_real_escape_string($db,$_POST['per']/100);
 	$sql = "UPDATE `brand` 
-	SET `name`='$brand', `pers`='$per' WHERE brand_id=$id";
+	SET `bname`='$brand', `persb`='$per' WHERE brand_id=$id";
 	if (mysqli_query($db, $sql)) {
 		echo json_encode(array("statusCode"=>200));
 	} 

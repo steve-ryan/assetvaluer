@@ -30,8 +30,8 @@ $pdf->SetFont('Arial', '', 12);
 
 
 $query = mysqli_query($db,"SELECT distinct r.vehicle_id, c.name AS owner,r.final_cost AS value,MAX(r.kdate) AS kdate,r.company_id,v.reg_no,v.yom,k.name AS conditionname,
-ac.name AS accident, v.chassis_no,v.model,v.cost,b.name AS bname,
-t.name as tname,a.name AS aname FROM report r
+ac.name AS accident, v.chassis_no,v.model,v.cost,b.bname AS bname,
+t.tname as tname,a.name AS aname FROM report r
 JOIN vehicle as v ON r.vehicle_id = v.vehicle_id
 JOIN assessor as a ON v.assessor_id = a.assessor_id 
 JOIN kondition  as k ON v.condition_id = k.condition_id 

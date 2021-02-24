@@ -3,7 +3,7 @@
 $condition = mysqli_real_escape_string($db,$_POST['name']);
 $per = mysqli_real_escape_string($db,$_POST['pers']/100);
 
-$brandduplicate = mysqli_query($db,"select * from kondition where name='$condition'");
+$conditionduplicate = mysqli_query($db,"select * from kondition where name='$condition'");
 
 if(mysqli_num_rows($conditionduplicate) > 0){
 echo json_encode(array("statusCode"=>201));

@@ -9,7 +9,7 @@ $typeduplicate=mysqli_query($db,"select * from type where name='$type'");
 		echo json_encode(array("statusCode"=>201));
 	}
 	else{
-$query="INSERT INTO `type`( `name`,`per`) 
+$query="INSERT INTO `type`( `tname`,`tper`) 
 	VALUES ('$type','$pers')";
 if (mysqli_query($db, $query)) {
 		echo json_encode(array("statusCode"=>200));

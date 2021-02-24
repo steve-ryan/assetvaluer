@@ -9,7 +9,7 @@ if(mysqli_num_rows($brandduplicate) > 0){
 echo json_encode(array("statusCode"=>201));
 }
 else{
-    $sql = "INSERT INTO `brand`(`name`,`pers`) VALUES ('$brand','$per')";
+    $sql = "INSERT INTO `brand`(`bname`,`persb`) VALUES ('$brand','$per')";
     if(mysqli_query($db,$sql)){
         echo json_encode(array("statusCode"=>200));
 

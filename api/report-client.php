@@ -3,7 +3,7 @@
     require ("./../includes/company-check.php");
     $cid=$_SESSION['cid'];
 	$sql = "
-    SELECT distinct r.vehicle_id,v.reg_no,r.vehicle_id,MAX(kdate),v.model,b.name AS brand,t.name AS type,v.yom,v.picture, k.name AS kond,ac.name AS name,v.chassis_no ,r.company_id FROM report r 
+    SELECT distinct r.vehicle_id,v.reg_no,r.vehicle_id,MAX(kdate),v.model,b.bname AS brand,t.tname AS type,v.yom,v.picture, k.name AS kond,ac.name AS name,v.chassis_no ,r.company_id FROM report r 
     JOIN vehicle v ON r.vehicle_id = v.vehicle_id 
     JOIN kondition k on k.condition_id = v.condition_id 
     JOIN accident_status as ac ON v.acc_id = ac.acc_id 

@@ -16,7 +16,7 @@ require("./database/config.php");
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for=""><strong>Select Client:</strong></label>
-                    <select name="client1" id="client1" class="form-control">
+                    <select name="client" id="client" class="form-control">
                         <option selected="true" disabled="disabled">Choose..</option>
                         <?php
                       $query = mysqli_query($db, "SELECT client_id ,name,email FROM client ORDER BY client_id ASC");
@@ -86,10 +86,10 @@ require("./database/config.php");
                         <?php
                         
                         
-                      $brand = mysqli_query($db, "SELECT brand_id ,name FROM brand ORDER BY brand_id ASC");
+                      $brand = mysqli_query($db, "SELECT brand_id ,bname FROM brand ORDER BY brand_id ASC");
                          $row = mysqli_num_rows($brand);
                        while ($row = mysqli_fetch_array($brand)){
-                      echo "<option value='". $row['brand_id'] ."'>" .$row['name'] ." </option>" ;
+                      echo "<option value='". $row['brand_id'] ."'>" .$row['bname'] ." </option>" ;
 
                        }
                        
@@ -103,10 +103,10 @@ require("./database/config.php");
                         <?php
                         
                         
-                      $type = mysqli_query($db, "SELECT type_id ,name FROM type ORDER BY name ASC");
+                      $type = mysqli_query($db, "SELECT type_id ,tname FROM type ORDER BY tname ASC");
                          $row = mysqli_num_rows($type);
                        while ($row = mysqli_fetch_array($type)){
-                      echo "<option value='". $row['type_id'] ."'>" .$row['name'] ."</option>" ;
+                      echo "<option value='". $row['type_id'] ."'>" .$row['tname'] ."</option>" ;
 
                        }
                        
@@ -173,7 +173,7 @@ $(document).ready(function() {
         var company = $('#company').val();
         var accident = $('#accident').val();
         var type = $('#type').val();
-        var client = $('#client1').val();
+        var client = $('#client').val();
         var model = $('#model').val();
         var yom = $('#yom').val();
         var reg_no = $('#reg_no').val();
@@ -181,7 +181,9 @@ $(document).ready(function() {
         var cost = $('#cost').val();
 
 
-        // console.log(company);
+        //  console.log(company, assessor_id, brand, condition,accident,type, client, model, yom, reg_no,chassis_no, cost );
+        console.log(client);
+        console.log(company);
 
         if (company != "" && brand != "" && assessor_id != "" && condition != "" && accident != "" && type != "" && client != "" && model != "" && yom !=
             "" && reg_no != "" &&
@@ -199,6 +201,7 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     var data = JSON.parse(data);
+                    console.log(data);
                 
                     if (data.statusCode == 200) {
                         $('#vehicleForm')[0].reset();

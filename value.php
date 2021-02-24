@@ -57,7 +57,7 @@ require("./includes/assessor-check.php");
 <script>
 $(document).ready(function() {
     // value computation
-    $("#sel_reg").change(function() {
+    $("#sel_reg").click(function() {
         var vehicle_id = $(this).val();
         var input = $("#finalvalue");
         $.ajax({

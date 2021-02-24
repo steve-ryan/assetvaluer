@@ -49,6 +49,12 @@ require("./../includes/admin-check.php");
                 <!-- Brand update modal -->
                 <div class="modal fade" id="update_brand" role="dialog">
                     <div class="modal-dialog modal-sm">
+                    <div class="alert alert-success alert-dismissible text-center" id="success" style="display:none;">
+                         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    </div>
+                    <div class="alert alert-danger alert-dismissible text-center" id="error" style="display:none;">
+                         <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                    </div>
                         <div class="modal-content">
                             <div class="modal-header bg-success" style="color:#fff;padding:6px;">
                                 <h5 class="modal-title"><i class="fa fa-edit"></i> Update Brand</h5>
@@ -182,7 +188,11 @@ require("./../includes/admin-check.php");
 				var dataResult = JSON.parse(dataResult);
 				if(dataResult.statusCode==200){
 					$('#update_brand').modal().hide();
-					alert('Data updated successfully !');
+                    $("#success").show();
+                            $('#success').html(
+                                    'Data added successfully !').delay(3000)
+                                .fadeOut(
+                                    3000);
 					$("#brand").load(" #brand");					
 				}
 			}
