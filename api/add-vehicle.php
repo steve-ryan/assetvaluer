@@ -23,7 +23,7 @@ $path = $path.strtolower($final_image);
 
 if(move_uploaded_file($tmp,$path)){
 
-          $client = mysqli_real_escape_string($db,$_POST['client1']);
+          $client = mysqli_real_escape_string($db,$_POST['client']);
           $company = mysqli_real_escape_string($db,$_POST['company']);
           $brand = mysqli_real_escape_string($db,$_POST['brand']);
           $type = mysqli_real_escape_string($db,$_POST['type']);

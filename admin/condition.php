@@ -116,20 +116,19 @@ require("./../includes/admin-check.php");
                     },
                     cache: false,
                     success: function(dataResult) {
+                        console.log(dataResult);
                         var dataResult = JSON.parse(dataResult);
+                        
                         if (dataResult.statusCode == 200) {
                             console.log(dataResult);
 
                             $("#condition_btn").removeAttr("disabled");
                             $('#conditionForm')[0].reset();
                             $("#success").show();
-                            $('#success').html(
-                                    'Condition details added successfully !').delay(3000)
-                                .fadeOut(
-                                    3000);
+                            $('#success').html('Condition details added successfully !').delay(3000).fadeOut(3000);
+
                             $("#condition").load(" #condition");
                         } else if (dataResult.statusCode == 201) {
-                            // alert("Error occured !");
                             $("#error").show();
                             $('#error').html('Condition already exists !').delay(3000).fadeOut(
                                 3000);

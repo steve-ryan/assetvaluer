@@ -8,7 +8,6 @@ include ("./database/config.php");
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     <script src="./js/jquery.js" type="text/javascript"></script>
-    <script src="./js/post.js" type="text/javascript"></script>
 </head>
 
 <body>

@@ -178,7 +178,7 @@ require("./../includes/admin-check.php");
                     var dataResult = JSON.parse(dataResult);
                     if (dataResult.statusCode == 200) {
                         $('#update_type').modal().hide();
-                        alert('Data updated successfully !');
+                        //alert('Data updated successfully !');
                         location.reload();
                     }
                 }
